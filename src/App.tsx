@@ -1,6 +1,7 @@
+import { Container, Input, Row, Spacer, Table } from '@nextui-org/react';
 import { useReducer, useState } from 'react'
 
-enum ActionTypes {
+export enum ActionTypes {
   add = 'add',
   remove = 'remove',
   update = 'update',
@@ -44,7 +45,7 @@ function reducer(state: ITodoState, { payload, type }: IAction): ITodoState {
     case ActionTypes.save:
       return { ...state }
     case ActionTypes.load:
-      return { ...state }                    
+      return { ...state }
     default:
       return state
   }
@@ -58,9 +59,56 @@ function App() {
   console.log(dispatch)
 
   return (
-    <div className="App">
-      work
-    </div>
+    <Container className="App" display='flex' direction='column' justify='center' css={{
+      height: '100vh'
+    }}>
+      <Row css={{
+      }}
+      >
+        <Input labelPlaceholder='Input your Task' />
+      </Row>
+      <Spacer y={1}/>
+      <Row>
+        <Table
+          bordered
+          shadow={false}
+          selectionMode="multiple"
+          aria-label="Example static bordered collection table"
+          css={{
+            height: "auto",
+            minWidth: "100%",
+          }}
+        >
+          <Table.Header>
+            <Table.Column>NAME</Table.Column>
+            <Table.Column>ROLE</Table.Column>
+            <Table.Column>STATUS</Table.Column>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row key="1">
+              <Table.Cell>Tony Reichert</Table.Cell>
+              <Table.Cell>CEO</Table.Cell>
+              <Table.Cell>Active</Table.Cell>
+            </Table.Row>
+            <Table.Row key="2">
+              <Table.Cell>Zoey Lang</Table.Cell>
+              <Table.Cell>Technical Lead</Table.Cell>
+              <Table.Cell>Paused</Table.Cell>
+            </Table.Row>
+            <Table.Row key="3">
+              <Table.Cell>Jane Fisher</Table.Cell>
+              <Table.Cell>Senior Developer</Table.Cell>
+              <Table.Cell>Active</Table.Cell>
+            </Table.Row>
+            <Table.Row key="4">
+              <Table.Cell>William Howard</Table.Cell>
+              <Table.Cell>Community Manager</Table.Cell>
+              <Table.Cell>Vacation</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </Row>
+    </Container>
   )
 }
 
