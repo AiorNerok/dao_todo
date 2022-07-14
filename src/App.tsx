@@ -1,5 +1,6 @@
 import { Container, Input, Row, Spacer, Table } from '@nextui-org/react';
 import { useReducer, useState } from 'react'
+import { InputComp } from './components';
 
 export enum ActionTypes {
   add = 'add',
@@ -55,19 +56,14 @@ function App() {
 
   let [state, dispatch] = useReducer(reducer, { ...TodoState })
 
-  console.log(state)
-  console.log(dispatch)
-
   return (
     <Container className="App" display='flex' direction='column' justify='center' css={{
       height: '100vh'
     }}>
-      <Row css={{
-      }}
-      >
-        <Input labelPlaceholder='Input your Task' />
+      <Row>
+        <InputComp />
       </Row>
-      <Spacer y={1}/>
+      <Spacer y={1} />
       <Row>
         <Table
           bordered
